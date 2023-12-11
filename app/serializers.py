@@ -22,9 +22,7 @@ class EmployeeSerializer(serializers.Serializer):
         newEmployee.id = empolyee.id
         newEmployee.save()
         return newEmployee
-        
-        
-    
+
     
 class UserSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=225)
