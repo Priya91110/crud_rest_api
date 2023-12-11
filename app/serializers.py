@@ -17,6 +17,7 @@ class EmployeeSerializer(serializers.Serializer):
     #  to update data(via PUT method)
     # instance = employee (instance is which we have to update data employee )
     def update(self, empolyee, validated_data):
+        # if it is dict and we have to pass named argument we have to user **
         newEmployee = Employee(**validated_data)
         newEmployee.id = empolyee.id
         newEmployee.save()

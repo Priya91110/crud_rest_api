@@ -53,10 +53,9 @@ def employeeDetailView(request, pk):
         return JsonResponse(serializer.data, safe=False)
     
     elif request.method == 'PUT':
-        
         jsondata = JSONParser.parse(request)
-        serializer = EmployeeSerializer(employee, request.jsondata)
+        serializer = EmployeeSerializer(employee, data=jsondata)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse({"sdfsdf":"sdfsdf"},safe=False)
+            return JsonResponse(serializer.data, safe=False)
         return JsonResponse(serializer.errors, safe=False)
