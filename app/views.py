@@ -66,8 +66,16 @@ def employeeDetailView(request, pk):
 
 
 # To show all the users including admin   
-
+# function with out ui
+'''
 def UserListView(request):
     users_data = User.objects.all()
     serializer = UserSerializer(users_data, many=True)
     return JsonResponse(serializer.data)
+'''
+@api_view(['GET'])
+def UserListView(request):
+    if request.method=='GET':
+        users_data = User.objects.all()
+        serializer = UserSerializer(users_data, many=True)
+        return Response(serializer.data)
